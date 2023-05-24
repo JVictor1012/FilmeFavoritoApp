@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 export class FilmesService {
 
   filmes : Filme[]
+  favoritos: Filme[] = [];
+
 
   KEY = "b5a09f8c"
   API = `https://www.omdbapi.com/?apikey=${this.KEY}`;
@@ -21,12 +23,19 @@ export class FilmesService {
     return this.http.get<Filme>(`${this.API}&t=${Title}`)
     
   }
-
-
   
   getFilmes(){
     console.log(this.filmes)
     return this.filmes
+  }
+
+  adicionarFavorito(filme: Filme) {
+    this.favoritos.push(filme);
+    console.log(this.favoritos)
+  }
+
+  getFavoritos(){
+    return this.favoritos
   }
 
 

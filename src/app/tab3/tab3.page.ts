@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Filme } from '../model/Filme';
+import { FilmesService } from '../model/filmes.service';
 
 @Component({
   selector: 'app-tab3',
@@ -7,6 +9,12 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+  favoritos?: Filme[]
+
+  constructor(private service : FilmesService) {}
+
+  ngOnInit(){
+    this.favoritos = this.service.getFavoritos()
+  }
 
 }

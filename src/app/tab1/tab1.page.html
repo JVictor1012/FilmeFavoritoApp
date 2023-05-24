@@ -1,11 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      FilmWorld
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense" >
-    <ion-toolbar color="primary">
-      <ion-title size="small">Film World</ion-title>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">FilmWorld</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-searchbar color="medium" animated="true" placeholder='"Vingadores: Ultimato"' (keyup.enter)="getFilme(titulo)" #titulo></ion-searchbar>
+
+  <ion-searchbar color="medium" animated="true" placeholder='"Vingadores: Ultimato"'  #titulo></ion-searchbar>
+  <ion-button (click)="getFilme(titulo.value)">Pesquisar</ion-button>
 
   <ion-card *ngFor="let filme of listFilmes">
 
@@ -32,6 +42,8 @@
     <ion-item lines="none">
       <ion-label> Ano: {{filme.Year}}</ion-label>
     </ion-item>
+
+    <ion-button color="warning" (click)="AdicionarFav(filme)">Favorito</ion-button>
    
   </ion-card>
 

@@ -14,7 +14,6 @@ export class Tab1Page {
   constructor(private service: FilmesService) {
     this.listFilmes = service.getFilmes()
 
-    this.service.GetTitle('Shrek')
   }
 
   ngOnInit(){
@@ -24,7 +23,14 @@ export class Tab1Page {
   }
 
   getFilme(titulo: any){
-    this.service.GetTitle(titulo)
+    this.service.GetTitle(titulo).subscribe(res => {
+      this.listFilmes = [res]
+    })
+  }
+
+  AdicionarFav(filme: Filme){
+    this.service.adicionarFavorito(filme)
+
   }
 
 
